@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free date calculator tool. Calculate days, weeks, months, and years between dates. Perfect for project planning and scheduling.">
+    <meta name="keywords" content="date calculator, days between dates, week calculator, month calculator, date difference">
+    <meta name="author" content="Your Companion">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Date Calculator - Free Online Date Difference Calculator">
+    <meta property="og:description" content="Calculate the difference between dates in days, weeks, months, or years.">
+    <meta property="og:url" content="https://yashwantbuilds.github.io/your-companion/tools/date-calculator/">
+    <canonical href="https://yashwantbuilds.github.io/your-companion/tools/date-calculator/">
+    
+    <title>Date Calculator - Free Online Date Difference Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-success {
+            background: #51cf66;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .section h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        input[type="date"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .results {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .result-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .result-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="/">Your Companion</a> / Tools / Date Calculator
+        </div>
+        
+        <a href="/" class="back-link">← Back to Home</a>
+
+        <header>
+            <h1>📅 Date Calculator</h1>
+            <p>Calculate the difference between dates in various time units</p>
+        </header>
+
+        <div class="main-content">
+            <div class="controls">
+                <button class="btn-primary" onclick="calculateDifference()">🔢 Calculate</button>
+                <button class="btn-secondary" onclick="setToday()">📆 Use Today</button>
+                <button class="btn-success" onclick="copyResults()">📋 Copy</button>
+                <button class="btn-secondary" onclick="clearDates()">🗑️ Clear</button>
+            </div>
+
+            <div class="grid-2">
+                <div class="section">
+                    <h3>📅 Start Date</h3>
+                    <label>From:</label>
+                    <input type="date" id="startDate">
+                </div>
+
+                <div class="section">
+                    <h3>📅 End Date</h3>
+                    <label>To:</label>
+                    <input type="date" id="endDate">
+                </div>
+            </div>
+
+            <div id="results" class="results">
+                <h3 style="color: #333; margin-bottom: 15px;">⏱️ Calculation Results:</h3>
+                <div id="resultContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('endDate').value = today;
+        });
+
+        function setToday() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('endDate').value = today;
+        }
+
+        function calculateDifference() {
+            const startDateStr = document.getElementById('startDate').value;
+            const endDateStr = document.getElementById('endDate').value;
+
+            if (!startDateStr || !endDateStr) {
+                alert('Please select both dates');
+                return;
+            }
+
+            const startDate = new Date(startDateStr);
+            const endDate = new Date(endDateStr);
+
+            if (startDate > endDate) {
+                alert('Start date must be before end date');
+                return;
+            }
+
+            const timeDiff = endDate - startDate;
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const weeks = Math.floor(days / 7);
+            const months = calculateMonths(startDate, endDate);
+            const years = Math.floor(months / 12);
+            const remainingDays = days % 7;
+            const remainingMonths = months % 12;
+
+            let resultHTML = `
+                <div class="result-card">
+                    <span>Total Days</span>
+                    <span class="result-value">${days}</span>
+                </div>
+                <div class="result-card">
+                    <span>Total Weeks</span>
+                    <span class="result-value">${weeks}</span>
+                </div>
+                <div class="result-card">
+                    <span>Total Months</span>
+                    <span class="result-value">${months}</span>
+                </div>
+                <div class="result-card">
+                    <span>Total Years</span>
+                    <span class="result-value">${years}</span>
+                </div>
+                <div style="background: #fff; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #667eea;">
+                    <p style="color: #333; margin-bottom: 5px;"><strong>Breakdown:</strong></p>
+                    <p style="color: #666; font-size: 0.95em;">${weeks} weeks and ${remainingDays} days</p>
+                    <p style="color: #666; font-size: 0.95em;">${years} years and ${remainingMonths} months</p>
+                </div>
+            `;
+
+            document.getElementById('resultContent').innerHTML = resultHTML;
+            document.getElementById('results').style.display = 'block';
+        }
+
+        function calculateMonths(startDate, endDate) {
+            let months = 0;
+            let tempDate = new Date(startDate);
+
+            while (tempDate < endDate) {
+                tempDate.setMonth(tempDate.getMonth() + 1);
+                if (tempDate <= endDate) {
+                    months++;
+                }
+            }
+
+            return months;
+        }
+
+        function copyResults() {
+            const results = document.getElementById('resultContent');
+            if (!results.textContent.trim()) {
+                alert('No results to copy');
+                return;
+            }
+            navigator.clipboard.writeText(results.innerText).then(() => {
+                alert('✓ Copied!');
+            }).catch(() => alert('Error'));
+        }
+
+        function clearDates() {
+            document.getElementById('startDate').value = '';
+            document.getElementById('endDate').value = '';
+            document.getElementById('results').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

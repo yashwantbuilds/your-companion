@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free JSON beautifier, formatter, minifier, and validator. Supports file upload, minification, and formatting with customizable indentation.">
+    <meta name="keywords" content="JSON beautifier, JSON formatter, JSON minifier, JSON validator, pretty JSON, JSON parser">
+    <meta name="author" content="Your Companion">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="JSON Beautifier - Free Online JSON Formatter">
+    <meta property="og:description" content="Format, validate, and minify JSON instantly. No registration required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yashwantbuilds.github.io/your-companion/tools/json-beautifier/">
+    <canonical href="https://yashwantbuilds.github.io/your-companion/tools/json-beautifier/">
+    
+    <title>JSON Beautifier - Free Online JSON Formatter & Validator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #5568d3 0%, #6a3f92 100%);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background: #e8e8e8;
+        }
+
+        .btn-success {
+            background: #51cf66;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #40c057;
+        }
+
+        .btn-danger {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #ee5a52;
+        }
+
+        .editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .editor-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .editor-section h3 {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1em;
+        }
+
+        textarea {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            resize: none;
+            min-height: 400px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .options {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .option-group {
+            margin-bottom: 15px;
+        }
+
+        .option-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .option-group select,
+        .option-group input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        .stats {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .responsive-note {
+            text-align: center;
+            color: #999;
+            font-size: 0.85em;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .editor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="/">Your Companion</a> / <a href="/">Tools</a> / JSON Beautifier
+        </div>
+        
+        <a href="/" class="back-link">← Back to Home</a>
+
+        <header>
+            <h1>📄 JSON Beautifier</h1>
+            <p>Format, validate, and minify JSON data instantly</p>
+        </header>
+
+        <div class="main-content">
+            <div class="controls">
+                <button class="btn-primary" onclick="beautifyJSON()">✨ Beautify</button>
+                <button class="btn-secondary" onclick="minifyJSON()">🗜️ Minify</button>
+                <button class="btn-secondary" onclick="validateJSON()">✓ Validate</button>
+                <button class="btn-secondary" onclick="uploadFile()">📂 Upload File</button>
+                <button class="btn-success" onclick="copyJSON()">📋 Copy</button>
+                <button class="btn-secondary" onclick="downloadJSON()">⬇️ Download</button>
+                <button class="btn-danger" onclick="clearJSON()">🗑️ Clear</button>
+            </div>
+
+            <input type="file" id="fileInput" style="display: none;" accept=".json,.txt" onchange="handleFileUpload(event)">
+
+            <div class="options">
+                <div class="option-group">
+                    <label for="indentSize">Indentation Size:</label>
+                    <select id="indentSize" onchange="beautifyJSON()">
+                        <option value="2">2 Spaces</option>
+                        <option value="3">3 Spaces</option>
+                        <option value="4" selected>4 Spaces</option>
+                        <option value="tab">Tab</option>
+                    </select>
+                </div>
+                <div id="stats" class="stats" style="display: none;"></div>
+            </div>
+
+            <div class="editor-grid">
+                <div class="editor-section">
+                    <h3>📥 Input JSON</h3>
+                    <textarea id="inputJSON" placeholder="Paste your JSON here or upload a file..."></textarea>
+                </div>
+                <div class="editor-section">
+                    <h3>📤 Output JSON</h3>
+                    <textarea id="outputJSON" placeholder="Formatted JSON will appear here..." readonly></textarea>
+                </div>
+            </div>
+
+            <div class="responsive-note">
+                ✅ All processing happens locally in your browser
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function beautifyJSON() {
+            const input = document.getElementById('inputJSON').value.trim();
+            if (!input) return;
+
+            try {
+                const parsed = JSON.parse(input);
+                const indent = getIndentValue();
+                const output = JSON.stringify(parsed, null, indent);
+                document.getElementById('outputJSON').value = output;
+                updateStats(input, output);
+            } catch (error) {
+                document.getElementById('outputJSON').value = `❌ JSON Parse Error: ${error.message}`;
+            }
+        }
+
+        function minifyJSON() {
+            const input = document.getElementById('inputJSON').value.trim();
+            if (!input) return;
+
+            try {
+                const parsed = JSON.parse(input);
+                const output = JSON.stringify(parsed);
+                document.getElementById('outputJSON').value = output;
+                updateStats(input, output);
+            } catch (error) {
+                document.getElementById('outputJSON').value = `❌ JSON Parse Error: ${error.message}`;
+            }
+        }
+
+        function validateJSON() {
+            const input = document.getElementById('inputJSON').value.trim();
+            if (!input) return;
+
+            try {
+                JSON.parse(input);
+                document.getElementById('outputJSON').value = '✅ Valid JSON!';
+                document.getElementById('stats').innerHTML = '<strong>✓ JSON is valid and well-formed</strong>';
+                document.getElementById('stats').style.display = 'block';
+            } catch (error) {
+                document.getElementById('outputJSON').value = `❌ JSON Validation Error:\n${error.message}`;
+            }
+        }
+
+        function getIndentValue() {
+            const select = document.getElementById('indentSize');
+            return select.value === 'tab' ? '\t' : parseInt(select.value);
+        }
+
+        function updateStats(input, output) {
+            const stats = document.getElementById('stats');
+            stats.innerHTML = `
+                <strong>Size Reduction:</strong> ${input.length} → ${output.length} chars (${Math.round((1 - output.length / input.length) * 100)}%)
+            `;
+            stats.style.display = 'block';
+        }
+
+        function uploadFile() {
+            document.getElementById('fileInput').click();
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('inputJSON').value = e.target.result;
+                beautifyJSON();
+            };
+            reader.readAsText(file);
+        }
+
+        function copyJSON() {
+            const output = document.getElementById('outputJSON').value;
+            if (!output) {
+                alert('Nothing to copy');
+                return;
+            }
+            navigator.clipboard.writeText(output).then(() => {
+                alert('✓ Copied to clipboard!');
+            }).catch(() => alert('Error copying'));
+        }
+
+        function downloadJSON() {
+            const output = document.getElementById('outputJSON').value;
+            if (!output) {
+                alert('Nothing to download');
+                return;
+            }
+            const blob = new Blob([output], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'formatted.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function clearJSON() {
+            document.getElementById('inputJSON').value = '';
+            document.getElementById('outputJSON').value = '';
+            document.getElementById('stats').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
