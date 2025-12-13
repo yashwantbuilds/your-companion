@@ -33,44 +33,44 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 15px;
+            padding: 10px;
             color: #333;
             line-height: 1.5;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
         /* HEADER */
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             color: white;
-            padding: 20px 0;
+            padding: 10px 0;
         }
 
         header h1 {
-            font-size: 2.8em;
-            margin-bottom: 10px;
+            font-size: 2.2em;
+            margin-bottom: 5px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
             font-weight: 800;
         }
 
         header p {
-            font-size: 1.1em;
+            font-size: 0.95em;
             opacity: 0.95;
             max-width: 800px;
-            margin: 0 auto 15px;
+            margin: 0 auto 10px;
         }
 
         .header-stats {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 20px;
             flex-wrap: wrap;
-            font-size: 0.95em;
+            font-size: 0.85em;
         }
 
         .stat {
@@ -79,111 +79,72 @@
 
         .stat-value {
             font-weight: bold;
-            font-size: 1.3em;
+            font-size: 1.1em;
             display: block;
         }
 
         .stat-label {
-            font-size: 0.85em;
+            font-size: 0.75em;
             opacity: 0.9;
         }
 
         /* FEATURES HIGHLIGHT */
         .features-highlight {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 12px;
-            margin-bottom: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 8px;
+            margin-bottom: 15px;
         }
 
         .feature-badge {
             background: rgba(255, 255, 255, 0.9);
-            padding: 10px 15px;
-            border-radius: 8px;
+            padding: 8px 10px;
+            border-radius: 6px;
             text-align: center;
-            font-size: 0.85em;
+            font-size: 0.75em;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .feature-badge strong {
             color: #667eea;
             display: block;
-        }
-
-        /* INFO BOX */
-        .info-box {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .info-box h2 {
-            color: #667eea;
-            font-size: 1.3em;
-            margin-bottom: 12px;
-        }
-
-        .info-box p {
-            color: #555;
-            font-size: 0.95em;
-            line-height: 1.6;
-            margin-bottom: 8px;
-        }
-
-        .info-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            margin-top: 12px;
-        }
-
-        .info-item {
-            background: #f8f9fa;
-            padding: 12px;
-            border-radius: 6px;
-            border-left: 3px solid #667eea;
             font-size: 0.9em;
         }
 
-        .info-item strong {
-            color: #667eea;
-        }
-
-        /* TOOLS GRID - COMPACT */
+        /* TOOLS GRID - OPTIMIZED FOR NO SCROLLING */
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
             margin-bottom: 20px;
         }
 
         .tool-card {
             background: white;
-            border-radius: 10px;
-            padding: 18px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            padding: 14px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
         }
 
         .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
         }
 
         .tool-header {
             display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
         }
 
         .tool-icon {
-            font-size: 2em;
-            min-width: 40px;
+            font-size: 1.8em;
+            min-width: 35px;
+            flex-shrink: 0;
         }
 
         .tool-title {
@@ -192,23 +153,25 @@
 
         .tool-title h3 {
             color: #667eea;
-            font-size: 1.2em;
-            margin-bottom: 2px;
+            font-size: 1.1em;
+            margin-bottom: 1px;
+            line-height: 1.2;
         }
 
         .tool-title p {
             color: #666;
-            font-size: 0.85em;
-            line-height: 1.3;
+            font-size: 0.8em;
+            line-height: 1.2;
         }
 
         .tool-features {
             background: #f8f9fa;
-            padding: 10px;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            font-size: 0.8em;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            font-size: 0.75em;
             color: #555;
+            flex: 1;
         }
 
         .tool-features ul {
@@ -218,38 +181,83 @@
         }
 
         .tool-features li {
-            padding: 2px 0;
+            padding: 1px 0;
             display: flex;
             align-items: center;
+            line-height: 1.2;
         }
 
         .tool-features li:before {
             content: "✓";
             color: #4caf50;
             font-weight: bold;
-            margin-right: 6px;
-            font-size: 0.9em;
+            margin-right: 5px;
+            font-size: 0.85em;
+            flex-shrink: 0;
         }
 
         .tool-btn {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            padding: 10px 16px;
-            border-radius: 6px;
+            padding: 8px 12px;
+            border-radius: 5px;
             font-weight: 600;
             cursor: pointer;
-            font-size: 0.9em;
+            font-size: 0.8em;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
             text-align: center;
             margin-top: auto;
+            width: 100%;
         }
 
         .tool-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        /* INFO BOX - AT BOTTOM */
+        .info-box {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+        }
+
+        .info-box h2 {
+            color: #667eea;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            color: #555;
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin-bottom: 6px;
+        }
+
+        .info-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .info-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #667eea;
+            font-size: 0.85em;
+        }
+
+        .info-item strong {
+            color: #667eea;
+            font-size: 0.9em;
         }
 
         /* FOOTER */
@@ -358,18 +366,6 @@
             <div class="feature-badge">
                 <strong>🌐 Works</strong>
                 Offline
-            </div>
-        </div>
-
-        <!-- ABOUT -->
-        <div class="info-box">
-            <h2>What is Your Companion?</h2>
-            <p>A collection of powerful, free online utilities designed for developers. Each tool is optimized for speed, privacy, and ease of use. All processing happens in your browser—your data never leaves your device.</p>
-            <div class="info-list">
-                <div class="info-item"><strong>✓ Free Forever</strong> - No premium limits, no trials</div>
-                <div class="info-item"><strong>✓ No Data Collection</strong> - We don't track you</div>
-                <div class="info-item"><strong>✓ Open Source</strong> - Pure HTML/CSS/JavaScript</div>
-                <div class="info-item"><strong>✓ Fast Loading</strong> - No external dependencies</div>
             </div>
         </div>
 
@@ -513,6 +509,18 @@
                     </ul>
                 </div>
                 <a href="tools/url-encoder/" class="tool-btn">Open Tool →</a>
+            </div>
+        </div>
+
+        <!-- ABOUT -->
+        <div class="info-box">
+            <h2>What is Your Companion?</h2>
+            <p>A collection of powerful, free online utilities designed for developers. All processing happens in your browser—your data never leaves your device.</p>
+            <div class="info-list">
+                <div class="info-item"><strong>✓ Free Forever</strong> - No premium limits</div>
+                <div class="info-item"><strong>✓ No Data Collection</strong> - We don't track you</div>
+                <div class="info-item"><strong>✓ Open Source</strong> - Pure HTML/CSS/JS</div>
+                <div class="info-item"><strong>✓ Fast</strong> - No external dependencies</div>
             </div>
         </div>
 
