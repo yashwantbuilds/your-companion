@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yashwantbuilds.github.io/your-companion/sitemap.xml
+
+# Allow search engines to index all pages
+Allow: /tools/
+Allow: /tools/json-beautifier/
+Allow: /tools/regex-finder/
+Allow: /tools/cron-builder/
+Allow: /tools/timezone-converter/
+Allow: /tools/date-calculator/
+Allow: /tools/text-case/

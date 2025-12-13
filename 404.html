@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Your Companion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 50px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <p>Page Not Found</p>
+        <p>The page you're looking for doesn't exist.</p>
+        <a href="/">← Go Back to Home</a>
+    </div>
+
+    <script>
+        // GitHub Pages SPA routing workaround
+        // This script helps handle client-side routing on GitHub Pages
+        if (window.location.pathname !== '/' && !window.location.pathname.includes('.html')) {
+            const path = window.location.pathname;
+            
+            // Map paths to index.html files
+            const pathMap = {
+                '/your-companion/tools/json-beautifier/': '/your-companion/tools/json-beautifier/index.html',
+                '/your-companion/tools/regex-finder/': '/your-companion/tools/regex-finder/index.html',
+                '/your-companion/tools/cron-builder/': '/your-companion/tools/cron-builder/index.html',
+                '/your-companion/tools/timezone-converter/': '/your-companion/tools/timezone-converter/index.html',
+                '/your-companion/tools/date-calculator/': '/your-companion/tools/date-calculator/index.html',
+                '/your-companion/tools/text-case/': '/your-companion/tools/text-case/index.html',
+            };
+            
+            if (pathMap[path]) {
+                window.location.href = pathMap[path];
+            }
+        }
+    </script>
+</body>
+</html>
