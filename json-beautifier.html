@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Beautifier - Format & Validate JSON</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #5568d3 0%, #6a3f92 100%);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background: #e8e8e8;
+        }
+
+        .btn-danger {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #ee5a52;
+        }
+
+        .btn-success {
+            background: #51cf66;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #40c057;
+        }
+
+        .editor-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .editor {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .editor-label {
+            font-weight: 700;
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .editor-info {
+            font-size: 0.85em;
+            color: #666;
+            font-weight: normal;
+        }
+
+        textarea {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95em;
+            line-height: 1.5;
+            resize: none;
+            transition: border-color 0.3s ease;
+            min-height: 400px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea.error {
+            border-color: #ff6b6b;
+            background-color: #fff5f5;
+        }
+
+        .status-message {
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        .status-message.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .status-message.error {
+            background-color: #fff5f5;
+            color: #c92a2a;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .status-message.success {
+            background-color: #f1fdf4;
+            color: #2f7e3a;
+            border-left: 4px solid #51cf66;
+        }
+
+        .indentation-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .indentation-control label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .indentation-control select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95em;
+            background: white;
+            cursor: pointer;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .file-input-wrapper input[type="file"] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .features {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .features h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .feature-item::before {
+            content: "✓";
+            color: #51cf66;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .responsive-note {
+            text-align: center;
+            color: #999;
+            font-size: 0.85em;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .editor-container {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            textarea {
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index-home.html" class="back-link">← Back to Home</a>
+
+        <header>
+            <h1>🎨 JSON Beautifier</h1>
+            <p>Format, validate, and beautify JSON data with ease</p>
+        </header>
+
+        <div class="main-content">
+            <div class="controls">
+                <button class="btn-primary" onclick="beautifyJSON()">✨ Beautify</button>
+                <button class="btn-secondary" onclick="minifyJSON()">📦 Minify</button>
+                <button class="btn-success" onclick="copyToClipboard()">📋 Copy</button>
+                <button class="btn-secondary" onclick="downloadJSON()">⬇️ Download</button>
+                <button class="btn-danger" onclick="clearAll()">🗑️ Clear</button>
+                
+                <div style="flex: 1;"></div>
+                
+                <div class="indentation-control">
+                    <label for="indentation">Indent:</label>
+                    <select id="indentation">
+                        <option value="2">2 spaces</option>
+                        <option value="4" selected>4 spaces</option>
+                        <option value="3">3 spaces</option>
+                        <option value="tab">Tab</option>
+                    </select>
+                </div>
+
+                <div class="file-input-wrapper">
+                    <button class="btn-secondary" onclick="document.getElementById('fileInput').click()">📁 Upload</button>
+                    <input type="file" id="fileInput" accept=".json,.txt" onchange="handleFileUpload(event)">
+                </div>
+            </div>
+
+            <div class="editor-container">
+                <div class="editor">
+                    <div class="editor-label">
+                        <span>Input JSON</span>
+                        <span class="editor-info" id="inputInfo">Ln: 1, Col: 1</span>
+                    </div>
+                    <textarea 
+                        id="inputJSON" 
+                        placeholder='Paste or type your JSON here...&#10;&#10;Example:&#10;{"name": "John", "age": 30}'
+                        onkeyup="updateLineColumn(this, 'inputInfo')"
+                        onclick="updateLineColumn(this, 'inputInfo')"
+                    ></textarea>
+                    <div class="status-message" id="inputStatus"></div>
+                </div>
+
+                <div class="editor">
+                    <div class="editor-label">
+                        <span>Output JSON</span>
+                        <span class="editor-info" id="outputInfo">Ln: 1, Col: 1</span>
+                    </div>
+                    <textarea 
+                        id="outputJSON" 
+                        placeholder="Beautified JSON will appear here..."
+                        readonly
+                        onkeyup="updateLineColumn(this, 'outputInfo')"
+                        onclick="updateLineColumn(this, 'outputInfo')"
+                    ></textarea>
+                    <div class="status-message" id="outputStatus"></div>
+                </div>
+            </div>
+
+            <div class="features">
+                <h3>✨ Features</h3>
+                <div class="features-list">
+                    <div class="feature-item">Format & Beautify JSON</div>
+                    <div class="feature-item">Validate JSON syntax</div>
+                    <div class="feature-item">Minify JSON</div>
+                    <div class="feature-item">Copy to clipboard</div>
+                    <div class="feature-item">Download formatted JSON</div>
+                    <div class="feature-item">Upload JSON files</div>
+                    <div class="feature-item">Customizable indentation</div>
+                    <div class="feature-item">Real-time line/column tracking</div>
+                </div>
+            </div>
+
+            <div class="responsive-note">
+                ✅ All processing happens locally in your browser - no data is sent to any server
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Beautify JSON
+        function beautifyJSON() {
+            const inputElement = document.getElementById('inputJSON');
+            const outputElement = document.getElementById('outputJSON');
+            const inputStatus = document.getElementById('inputStatus');
+            const outputStatus = document.getElementById('outputStatus');
+            
+            try {
+                const jsonInput = inputElement.value.trim();
+                
+                if (!jsonInput) {
+                    showStatus(inputStatus, 'Please enter JSON to beautify', 'error');
+                    return;
+                }
+
+                const parsed = JSON.parse(jsonInput);
+                const indentation = getIndentation();
+                const beautified = JSON.stringify(parsed, null, indentation);
+                
+                outputElement.value = beautified;
+                inputElement.classList.remove('error');
+                outputElement.classList.remove('error');
+                
+                showStatus(inputStatus, '✓ Valid JSON', 'success');
+                showStatus(outputStatus, `✓ Beautified (${beautified.split('\n').length} lines)`, 'success');
+                
+            } catch (error) {
+                inputElement.classList.add('error');
+                showStatus(inputStatus, `✗ Invalid JSON: ${error.message}`, 'error');
+                outputElement.value = '';
+                outputElement.classList.add('error');
+            }
+        }
+
+        // Minify JSON
+        function minifyJSON() {
+            const inputElement = document.getElementById('inputJSON');
+            const outputElement = document.getElementById('outputJSON');
+            const inputStatus = document.getElementById('inputStatus');
+            const outputStatus = document.getElementById('outputStatus');
+            
+            try {
+                const jsonInput = inputElement.value.trim();
+                
+                if (!jsonInput) {
+                    showStatus(inputStatus, 'Please enter JSON to minify', 'error');
+                    return;
+                }
+
+                const parsed = JSON.parse(jsonInput);
+                const minified = JSON.stringify(parsed);
+                
+                outputElement.value = minified;
+                inputElement.classList.remove('error');
+                outputElement.classList.remove('error');
+                
+                showStatus(inputStatus, '✓ Valid JSON', 'success');
+                showStatus(outputStatus, `✓ Minified (${minified.length} characters)`, 'success');
+                
+            } catch (error) {
+                inputElement.classList.add('error');
+                showStatus(inputStatus, `✗ Invalid JSON: ${error.message}`, 'error');
+                outputElement.value = '';
+                outputElement.classList.add('error');
+            }
+        }
+
+        // Get indentation
+        function getIndentation() {
+            const value = document.getElementById('indentation').value;
+            if (value === 'tab') return '\t';
+            return parseInt(value);
+        }
+
+        // Copy to clipboard
+        function copyToClipboard() {
+            const outputElement = document.getElementById('outputJSON');
+            const outputStatus = document.getElementById('outputStatus');
+            
+            if (!outputElement.value) {
+                showStatus(outputStatus, 'No output to copy', 'error');
+                return;
+            }
+
+            navigator.clipboard.writeText(outputElement.value).then(() => {
+                showStatus(outputStatus, '✓ Copied to clipboard!', 'success');
+            }).catch(() => {
+                outputElement.select();
+                document.execCommand('copy');
+                showStatus(outputStatus, '✓ Copied to clipboard!', 'success');
+            });
+        }
+
+        // Download JSON
+        function downloadJSON() {
+            const outputElement = document.getElementById('outputJSON');
+            const outputStatus = document.getElementById('outputStatus');
+            
+            if (!outputElement.value) {
+                showStatus(outputStatus, 'No output to download', 'error');
+                return;
+            }
+
+            const blob = new Blob([outputElement.value], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'formatted.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showStatus(outputStatus, '✓ Download started!', 'success');
+        }
+
+        // Clear all
+        function clearAll() {
+            document.getElementById('inputJSON').value = '';
+            document.getElementById('outputJSON').value = '';
+            document.getElementById('inputJSON').classList.remove('error');
+            document.getElementById('outputJSON').classList.remove('error');
+            document.getElementById('inputStatus').classList.remove('show');
+            document.getElementById('outputStatus').classList.remove('show');
+            document.getElementById('inputJSON').focus();
+        }
+
+        // Handle file upload
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            const inputElement = document.getElementById('inputJSON');
+            const inputStatus = document.getElementById('inputStatus');
+            
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const content = e.target.result;
+                    const parsed = JSON.parse(content);
+                    inputElement.value = JSON.stringify(parsed, null, 2);
+                    inputElement.classList.remove('error');
+                    showStatus(inputStatus, `✓ File loaded (${file.name})`, 'success');
+                } catch (error) {
+                    inputElement.value = e.target.result;
+                    inputElement.classList.add('error');
+                    showStatus(inputStatus, `⚠ File loaded but may not be valid JSON`, 'info');
+                }
+            };
+            reader.readAsText(file);
+            
+            event.target.value = '';
+        }
+
+        // Show status message
+        function showStatus(element, message, type) {
+            element.textContent = message;
+            element.className = `status-message show ${type}`;
+            
+            setTimeout(() => {
+                element.classList.remove('show');
+            }, 4000);
+        }
+
+        // Update line and column info
+        function updateLineColumn(textarea, infoId) {
+            const lines = textarea.value.substring(0, textarea.selectionStart).split('\n');
+            const ln = lines.length;
+            const col = lines[lines.length - 1].length + 1;
+            document.getElementById(infoId).textContent = `Ln: ${ln}, Col: ${col}`;
+        }
+
+        // Auto-beautify on input
+        document.getElementById('inputJSON').addEventListener('paste', function() {
+            setTimeout(beautifyJSON, 10);
+        });
+
+        // Focus on input
+        document.getElementById('inputJSON').focus();
+    </script>
+</body>
+</html>
