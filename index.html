@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Your Companion - Free online utility tools for developers. Includes JSON beautifier, regex tester, cron builder, timezone converter, date calculator, and text case converter.">
-    <meta name="keywords" content="json beautifier, regex tester, cron builder, timezone converter, date calculator, text case converter, online tools, developer tools, utility tools, free tools">
+    <meta name="description" content="Your Companion - 7 Free Online Developer Tools. JSON beautifier, regex tester, cron builder, timezone converter, date calculator, text case converter, URL encoder. All tools run locally in your browser.">
+    <meta name="keywords" content="json beautifier, regex tester, cron builder, timezone converter, date calculator, text case converter, url encoder, online tools, developer tools, free tools, no signup">
     <meta name="author" content="Your Companion">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta property="og:title" content="Your Companion - Free Online Utility Tools">
-    <meta property="og:description" content="Free online utilities for developers and content creators. JSON beautifier, regex tester, cron builder, timezone converter, date calculator, text case converter.">
+    <meta property="og:title" content="Your Companion - 7 Free Online Developer Tools">
+    <meta property="og:description" content="7 free online utilities for developers. JSON beautifier, regex tester, cron builder, timezone converter, date calculator, text case converter, URL encoder. No signup needed.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yashwantbuilds.github.io/your-companion/">
-    <meta property="og:image" content="https://yashwantbuilds.github.io/your-companion/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Your Companion - Free Utility Tools">
-    <meta name="twitter:description" content="JSON beautifier, regex tester, cron builder, timezone converter, date calculator, and more">
-    <meta name="twitter:image" content="https://yashwantbuilds.github.io/your-companion/og-image.png">
+    <meta name="twitter:title" content="Your Companion - 7 Free Developer Tools">
+    <meta name="twitter:description" content="Free online utilities: JSON beautifier, regex tester, cron builder, timezone converter, date calculator, text case converter, URL encoder">
     <link rel="canonical" href="https://yashwantbuilds.github.io/your-companion/">
     <link rel="alternate" hreflang="en" href="https://yashwantbuilds.github.io/your-companion/">
     
-    <title>Your Companion - Free Online Utility Tools for Developers</title>
+    <title>Your Companion - 7 Free Online Developer Tools</title>
     <style>
         * {
             margin: 0;
@@ -35,44 +33,44 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 15px;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
+        /* HEADER */
         header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 30px;
             color: white;
-            padding: 40px 20px 20px;
+            padding: 20px 0;
         }
 
         header h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
+            font-size: 2.8em;
+            margin-bottom: 10px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
             font-weight: 800;
         }
 
         header p {
-            font-size: 1.3em;
+            font-size: 1.1em;
             opacity: 0.95;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 15px;
         }
 
         .header-stats {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 30px;
             flex-wrap: wrap;
-            margin-top: 30px;
+            font-size: 0.95em;
         }
 
         .stat {
@@ -80,245 +78,245 @@
         }
 
         .stat-value {
-            font-size: 2em;
             font-weight: bold;
+            font-size: 1.3em;
             display: block;
         }
 
         .stat-label {
-            font-size: 0.9em;
+            font-size: 0.85em;
             opacity: 0.9;
         }
 
-        .info-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            padding: 40px;
-            margin-bottom: 50px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .info-section h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 2em;
-        }
-
-        .info-section p {
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 15px;
-            font-size: 1.05em;
-        }
-
-        .features-list {
+        /* FEATURES HIGHLIGHT */
+        .features-highlight {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 25px;
         }
 
-        .feature {
-            padding: 15px;
-            background: #f8f9fa;
+        .feature-badge {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
             border-radius: 8px;
-            border-left: 4px solid #667eea;
+            text-align: center;
+            font-size: 0.85em;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .feature strong {
+        .feature-badge strong {
             color: #667eea;
             display: block;
-            margin-bottom: 5px;
         }
 
-        .utilities-section {
-            margin-bottom: 50px;
+        /* INFO BOX */
+        .info-box {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .utilities-title {
-            text-align: center;
-            color: white;
-            margin-bottom: 50px;
+        .info-box h2 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 12px;
         }
 
-        .utilities-title h2 {
-            font-size: 2.8em;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        .info-box p {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 8px;
         }
 
-        .utilities-title p {
-            font-size: 1.1em;
-            opacity: 0.95;
-        }
-
-        .utilities-grid {
+        .info-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
         }
 
-        .utility-card {
+        .info-item {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+            font-size: 0.9em;
+        }
+
+        .info-item strong {
+            color: #667eea;
+        }
+
+        /* TOOLS GRID - COMPACT */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tool-card {
             background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
         }
 
-        .utility-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .utility-icon {
-            font-size: 3.5em;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-
-        .utility-card h3 {
-            color: #667eea;
-            font-size: 1.6em;
-            margin-bottom: 12px;
-        }
-
-        .utility-card p {
-            color: #666;
-            margin-bottom: 15px;
-            flex-grow: 1;
-            line-height: 1.6;
-            font-size: 1em;
-        }
-
-        .features-brief {
-            background: #f8f9fa;
-            padding: 12px 15px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            font-size: 0.95em;
-        }
-
-        .features-brief li {
-            color: #555;
-            margin-bottom: 5px;
-            margin-left: 20px;
-        }
-
-        .features-brief li:last-child {
-            margin-bottom: 0;
-        }
-
-        .utility-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 6px;
-            font-size: 1em;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            align-self: flex-start;
-        }
-
-        .utility-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        footer {
-            text-align: center;
-            color: white;
-            padding: 40px 20px;
-            margin-top: 60px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        footer h3 {
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-
-        footer p {
-            opacity: 0.9;
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             margin-bottom: 10px;
         }
 
-        .footer-links {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+        .tool-icon {
+            font-size: 2em;
+            min-width: 40px;
         }
 
-        .footer-links a {
+        .tool-title {
+            flex: 1;
+        }
+
+        .tool-title h3 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 2px;
+        }
+
+        .tool-title p {
+            color: #666;
+            font-size: 0.85em;
+            line-height: 1.3;
+        }
+
+        .tool-features {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 0.8em;
+            color: #555;
+        }
+
+        .tool-features ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tool-features li {
+            padding: 2px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .tool-features li:before {
+            content: "✓";
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 6px;
+            font-size: 0.9em;
+        }
+
+        .tool-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .tool-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9em;
+        }
+
+        footer h3 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        footer a {
             color: white;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
+            margin: 0 15px;
         }
 
-        .footer-links a:hover {
-            opacity: 0.7;
+        footer a:hover {
             text-decoration: underline;
         }
 
-        .footer-bottom {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 0.95em;
-            opacity: 0.85;
-        }
-
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2.2em;
-            }
-
-            header p {
-                font-size: 1.1em;
-            }
-
-            .header-stats {
-                gap: 20px;
-            }
-
-            .utilities-title h2 {
                 font-size: 2em;
             }
 
-            .utilities-grid {
+            header p {
+                font-size: 1em;
+            }
+
+            .tools-grid {
                 grid-template-columns: 1fr;
             }
 
-            .info-section {
-                padding: 25px;
+            .header-stats {
+                gap: 15px;
+                font-size: 0.85em;
             }
 
-            .utility-btn {
+            .tool-btn {
                 width: 100%;
+            }
+
+            .features-highlight {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- HEADER -->
         <header>
             <h1>🛠️ Your Companion</h1>
-            <p>A collection of free, powerful online utility tools for developers and content creators</p>
+            <p>7 Free Online Developer Tools - No signup, No tracking, 100% Private</p>
             <div class="header-stats">
                 <div class="stat">
-                    <span class="stat-value">6</span>
-                    <span class="stat-label">Free Tools</span>
+                    <span class="stat-value">7</span>
+                    <span class="stat-label">Tools</span>
                 </div>
                 <div class="stat">
                     <span class="stat-value">100%</span>
@@ -328,151 +326,215 @@
                     <span class="stat-value">0</span>
                     <span class="stat-label">Ads</span>
                 </div>
+                <div class="stat">
+                    <span class="stat-value">∞</span>
+                    <span class="stat-label">Free</span>
+                </div>
             </div>
         </header>
 
-        <div class="info-section">
-            <h2>Welcome to Your Companion</h2>
-            <p>
-                We provide simple, fast, and reliable online tools to help you with everyday development tasks. 
-                Whether you need to format JSON, test regular expressions, schedule cron jobs, or convert text cases, 
-                we've got you covered.
-            </p>
-            <p>
-                <strong>Your privacy is our priority.</strong> All our tools run completely in your browser—no data 
-                is stored on our servers, no tracking, no analytics. What you do here stays here.
-            </p>
-            <div class="features-list">
-                <div class="feature">
-                    <strong>✅ Completely Free</strong>
-                    <p>No signup required, no premium features, no hidden costs.</p>
-                </div>
-                <div class="feature">
-                    <strong>🔒 100% Private</strong>
-                    <p>All processing happens locally in your browser.</p>
-                </div>
-                <div class="feature">
-                    <strong>⚡ Lightning Fast</strong>
-                    <p>No server delays, instant results for all operations.</p>
-                </div>
-                <div class="feature">
-                    <strong>📱 Fully Responsive</strong>
-                    <p>Works perfectly on desktop, tablet, and mobile devices.</p>
-                </div>
-                <div class="feature">
-                    <strong>🔧 Easy to Use</strong>
-                    <p>Simple, intuitive interfaces with helpful examples.</p>
-                </div>
-                <div class="feature">
-                    <strong>🌐 No Dependencies</strong>
-                    <p>Pure HTML, CSS, and JavaScript. No frameworks or libraries.</p>
-                </div>
+        <!-- QUICK FEATURES -->
+        <div class="features-highlight">
+            <div class="feature-badge">
+                <strong>⚡ Instant</strong>
+                No delays
+            </div>
+            <div class="feature-badge">
+                <strong>🔒 Secure</strong>
+                Browser only
+            </div>
+            <div class="feature-badge">
+                <strong>� Mobile</strong>
+                Responsive
+            </div>
+            <div class="feature-badge">
+                <strong>🔄 Swap</strong>
+                Input/Output
+            </div>
+            <div class="feature-badge">
+                <strong>� Copy</strong>
+                One click
+            </div>
+            <div class="feature-badge">
+                <strong>🌐 Works</strong>
+                Offline
             </div>
         </div>
 
-        <div class="utilities-section">
-            <div class="utilities-title">
-                <h2>✨ Our Tools</h2>
-                <p>Select any tool below to get started</p>
+        <!-- ABOUT -->
+        <div class="info-box">
+            <h2>What is Your Companion?</h2>
+            <p>A collection of powerful, free online utilities designed for developers. Each tool is optimized for speed, privacy, and ease of use. All processing happens in your browser—your data never leaves your device.</p>
+            <div class="info-list">
+                <div class="info-item"><strong>✓ Free Forever</strong> - No premium limits, no trials</div>
+                <div class="info-item"><strong>✓ No Data Collection</strong> - We don't track you</div>
+                <div class="info-item"><strong>✓ Open Source</strong> - Pure HTML/CSS/JavaScript</div>
+                <div class="info-item"><strong>✓ Fast Loading</strong> - No external dependencies</div>
+            </div>
+        </div>
+
+        <!-- TOOLS -->
+        <div class="tools-grid">
+            <!-- 1. JSON Beautifier -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">📄</div>
+                    <div class="tool-title">
+                        <h3>JSON Beautifier</h3>
+                        <p>Format & validate JSON</p>
+                    </div>
+                </div>
+                <div class="tool-features">
+                    <ul>
+                        <li>Beautify JSON</li>
+                        <li>Minify & compress</li>
+                        <li>Validate syntax</li>
+                        <li>File upload</li>
+                    </ul>
+                </div>
+                <a href="tools/json-beautifier/" class="tool-btn">Open Tool →</a>
             </div>
 
-            <div class="utilities-grid">
-                <!-- JSON Beautifier -->
-                <div class="utility-card">
-                    <div class="utility-icon">📄</div>
-                    <h3>JSON Beautifier</h3>
-                    <p>Format, validate, and minify JSON data instantly. Perfect for developers working with APIs and data processing.</p>
-                    <ul class="features-brief">
-                        <li>Beautify with custom indentation</li>
-                        <li>Minify for smaller size</li>
-                        <li>Validate JSON syntax</li>
-                        <li>File upload support</li>
-                    </ul>
-                    <a href="tools/json-beautifier/" class="utility-btn">Enter Tool →</a>
+            <!-- 2. Regex Finder -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">🔍</div>
+                    <div class="tool-title">
+                        <h3>Regex Finder</h3>
+                        <p>Test & debug patterns</p>
+                    </div>
                 </div>
-
-                <!-- Regex Finder -->
-                <div class="utility-card">
-                    <div class="utility-icon">🔍</div>
-                    <h3>Regex Finder</h3>
-                    <p>Test and debug regular expressions with live matching and replacement. Includes common patterns and examples.</p>
-                    <ul class="features-brief">
-                        <li>Find & Replace with regex</li>
-                        <li>Support for all flags</li>
-                        <li>Capture group support</li>
-                        <li>Built-in examples</li>
-                    </ul>
-                    <a href="tools/regex-finder/" class="utility-btn">Enter Tool →</a>
-                </div>
-
-                <!-- Cron Builder -->
-                <div class="utility-card">
-                    <div class="utility-icon">⏰</div>
-                    <h3>Cron Builder</h3>
-                    <p>Create and parse cron expressions for scheduling tasks. Learn cron syntax with interactive builder and presets.</p>
-                    <ul class="features-brief">
-                        <li>Build expressions visually</li>
-                        <li>Parse existing expressions</li>
-                        <li>Common preset expressions</li>
-                        <li>Human-readable descriptions</li>
-                    </ul>
-                    <a href="tools/cron-builder/" class="utility-btn">Enter Tool →</a>
-                </div>
-
-                <!-- Timezone Converter -->
-                <div class="utility-card">
-                    <div class="utility-icon">🌍</div>
-                    <h3>Timezone Converter</h3>
-                    <p>Convert times between different timezones instantly. Works with 15+ major timezones worldwide.</p>
-                    <ul class="features-brief">
-                        <li>15+ timezone support</li>
-                        <li>Current time option</li>
-                        <li>Quick timezone select</li>
-                        <li>DST aware conversions</li>
-                    </ul>
-                    <a href="tools/timezone-converter/" class="utility-btn">Enter Tool →</a>
-                </div>
-
-                <!-- Date Calculator -->
-                <div class="utility-card">
-                    <div class="utility-icon">📅</div>
-                    <h3>Date Calculator</h3>
-                    <p>Calculate the difference between dates in days, weeks, months, or years. Perfect for project planning.</p>
-                    <ul class="features-brief">
-                        <li>Days calculation</li>
-                        <li>Weeks & months</li>
-                        <li>Years calculation</li>
-                        <li>Detailed breakdown</li>
-                    </ul>
-                    <a href="tools/date-calculator/" class="utility-btn">Enter Tool →</a>
-                </div>
-
-                <!-- Text Case Converter -->
-                <div class="utility-card">
-                    <div class="utility-icon">🔤</div>
-                    <h3>Text Case Converter</h3>
-                    <p>Convert text between different cases: uppercase, lowercase, camelCase, snake_case, and more.</p>
-                    <ul class="features-brief">
-                        <li>10 case conversion types</li>
+                <div class="tool-features">
+                    <ul>
+                        <li>Find & replace</li>
+                        <li>All regex flags</li>
+                        <li>Capture groups</li>
                         <li>Live preview</li>
-                        <li>Character statistics</li>
-                        <li>Bulk download</li>
                     </ul>
-                    <a href="tools/text-case/" class="utility-btn">Enter Tool →</a>
                 </div>
+                <a href="tools/regex-finder/" class="tool-btn">Open Tool →</a>
+            </div>
+
+            <!-- 3. Cron Builder -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">⏰</div>
+                    <div class="tool-title">
+                        <h3>Cron Builder</h3>
+                        <p>Schedule tasks easily</p>
+                    </div>
+                </div>
+                <div class="tool-features">
+                    <ul>
+                        <li>Visual builder</li>
+                        <li>Parse expressions</li>
+                        <li>Presets & templates</li>
+                        <li>Human readable</li>
+                    </ul>
+                </div>
+                <a href="tools/cron-builder/" class="tool-btn">Open Tool →</a>
+            </div>
+
+            <!-- 4. Timezone Converter -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">🌍</div>
+                    <div class="tool-title">
+                        <h3>Timezone Converter</h3>
+                        <p>Convert across zones</p>
+                    </div>
+                </div>
+                <div class="tool-features">
+                    <ul>
+                        <li>15+ timezones</li>
+                        <li>Current time</li>
+                        <li>DST aware</li>
+                        <li>Quick select</li>
+                    </ul>
+                </div>
+                <a href="tools/timezone-converter/" class="tool-btn">Open Tool →</a>
+            </div>
+
+            <!-- 5. Date Calculator -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">📅</div>
+                    <div class="tool-title">
+                        <h3>Date Calculator</h3>
+                        <p>Calculate date differences</p>
+                    </div>
+                </div>
+                <div class="tool-features">
+                    <ul>
+                        <li>Days/weeks/months</li>
+                        <li>Year calculations</li>
+                        <li>Detailed breakdown</li>
+                        <li>Easy to use</li>
+                    </ul>
+                </div>
+                <a href="tools/date-calculator/" class="tool-btn">Open Tool →</a>
+            </div>
+
+            <!-- 6. Text Case Converter -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">🔤</div>
+                    <div class="tool-title">
+                        <h3>Text Case Converter</h3>
+                        <p>Change text cases</p>
+                    </div>
+                </div>
+                <div class="tool-features">
+                    <ul>
+                        <li>10 case types</li>
+                        <li>Live preview</li>
+                        <li>Char counter</li>
+                        <li>One-click copy</li>
+                    </ul>
+                </div>
+                <a href="tools/text-case/" class="tool-btn">Open Tool →</a>
+            </div>
+
+            <!-- 7. URL Encoder/Decoder -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">🔗</div>
+                    <div class="tool-title">
+                        <h3>URL Encoder/Decoder</h3>
+                        <p>Encode/decode URLs</p>
+                    </div>
+                </div>
+                <div class="tool-features">
+                    <ul>
+                        <li>Encode safely</li>
+                        <li>Decode text</li>
+                        <li>Char counting</li>
+                        <li>Swap input/output</li>
+                    </ul>
+                </div>
+                <a href="tools/url-encoder/" class="tool-btn">Open Tool →</a>
             </div>
         </div>
 
+        <!-- HOW IT WORKS -->
+        <div class="info-box">
+            <h2>How It Works</h2>
+            <p>Every tool on Your Companion operates entirely in your browser. When you enter data, it's processed locally using JavaScript—nothing is sent to any server. This means:</p>
+            <div class="info-list">
+                <div class="info-item"><strong>⚡ Instant Results</strong> - No network delay</div>
+                <div class="info-item"><strong>🔐 Complete Privacy</strong> - Your data stays with you</div>
+                <div class="info-item"><strong>📡 Works Offline</strong> - Use without internet</div>
+                <div class="info-item"><strong>🔄 No Ads</strong> - Clean, distraction-free</div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
         <footer>
             <h3>Your Companion</h3>
-            <p>&copy; 2025 Your Companion. All tools run locally in your browser.</p>
-            <p>Made with ❤️ for developers and creators</p>
-            <div class="footer-links">
+            <p>&copy; 2025 Your Companion - All tools run locally in your browser</p>
+            <div>
                 <a href="https://github.com/yashwantbuilds/your-companion" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="/sitemap.xml" target="_blank">Sitemap</a>
-            </div>
-            <div class="footer-bottom">
-                <p>No ads • No tracking • 100% Private • Completely Free</p>
+                <a href="sitemap.xml" target="_blank">Sitemap</a>
             </div>
         </footer>
     </div>
