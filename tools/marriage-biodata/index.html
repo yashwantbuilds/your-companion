@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marriage Biodata</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fff5f0, #fde2e4);
+}
+
+/* Decorative Outer Frame */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 50px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+    border: 8px solid #b8860b;
+}
+
+/* Inner Gold Border */
+.container::before {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border: 2px solid #b8860b;
+    border-radius: 15px;
+    pointer-events: none;
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 38px;
+    letter-spacing: 3px;
+    color: #8b0000;
+    margin-bottom: 35px;
+}
+
+/* Layout */
+.content {
+    display: flex;
+    gap: 30px; /* reduced */
+    flex-wrap: wrap;
+}
+
+.fields-section {
+    flex: 2;
+    min-width: 320px;
+}
+
+.photo-section {
+    flex: 1;
+    text-align: center;
+}
+
+/* Royal Photo Frame */
+.photo-box {
+    width: 100%;
+    max-width: 260px;
+    height: 340px;
+    margin: auto;
+    border-radius: 15px;
+    padding: 8px;
+    background: linear-gradient(135deg, #b8860b, #ffd700);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.photo-inner {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.photo-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-placeholder {
+    color: #888;
+    font-size: 14px;
+}
+
+/* Buttons */
+.btn {
+    margin-top: 12px;
+    padding: 8px 16px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+    margin-right: 6px;
+    font-size: 14px;
+}
+
+.add-btn { background: #8b0000; color: white; }
+.section-btn { background: #b8860b; color: white; }
+.print-btn { background: #003366; color: white; }
+.upload-btn { background: #8b0000; color: white; }
+
+.btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Section Titles (more compact) */
+.section-title {
+    margin: 18px 0 8px; /* reduced */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-title input {
+    font-size: 19px;
+    font-weight: 600;
+    border: none;
+    border-bottom: 2px solid #b8860b;
+    outline: none;
+    width: 100%;
+    padding: 4px;
+    color: #8b0000;
+    background: transparent;
+}
+
+.section-remove-btn {
+    background: #8b0000;
+    color: white;
+    border: none;
+    padding: 3px 8px;  /* smaller */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* Fields (compact spacing) */
+.field-row {
+    display: flex;
+    gap: 2px;           /* reduced from 10px */
+    margin-bottom: 4px; /* reduced from 6px */
+}
+
+.field-row input {
+    padding: 3px 2px;   /* compact */
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    flex: 1;
+    font-size: 14px;
+}
+
+.remove-btn {
+    background: #8b0000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 3px 8px;   /* smaller */
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* Print Styling */
+@media print {
+   .btn, .remove-btn, .section-remove-btn {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        font-size: 10px; /* smaller overall font */
+    }
+
+    .container {
+        box-shadow: none;
+        margin: 0;
+        padding: 20px; /* reduce padding for printing */
+    }
+
+    h1 {
+        font-size: 20px !important; /* smaller title */
+        letter-spacing: 1px !important;
+    }
+
+    .field-row input, .section-title input {
+        font-size: 10px !important; /* smaller fields */
+        border: none !important;
+        padding: 5px !important;
+    }
+
+    .field-row {
+        margin-bottom: 2px !important;
+        gap: 2px !important;
+    }
+
+    .section-title {
+        margin: 8px 0 4px !important;
+    }
+
+    .photo-box {
+        max-width: 150px !important;
+        max-height: 200px !important;
+    }
+
+    .photo-inner img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+    }
+
+    .photo-box {
+        max-width: 150px !important;
+        max-height: 200px !important;
+        background: none !important;  /* remove gradient background */
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
+    .photo-inner {
+        background: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .photo-inner img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+    }
+    
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1 contenteditable="true">Marriage Biodata</h1>
+
+    <div class="content">
+
+        <div class="fields-section">
+            <div id="fields-container"></div>
+
+            <button class="btn add-btn" onclick="addField()">+ Add Field</button>
+            <button class="btn section-btn" onclick="addSection()">+ Add Section</button>
+            <button class="btn print-btn" onclick="window.print()">🖨 Print</button>
+        </div>
+
+        <div class="photo-section">
+            <div class="photo-box">
+                <div class="photo-inner" id="photoBox">
+                    <div class="photo-placeholder">
+                        Portrait Photo
+                    </div>
+                </div>
+            </div>
+
+            <input type="file" id="photoInput" accept="image/*"
+                   style="display:none" onchange="previewPhoto(event)">
+
+            <button class="btn upload-btn"
+                onclick="document.getElementById('photoInput').click()">
+                Upload Photo
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function addField() {
+    const container = document.getElementById("fields-container");
+
+    const row = document.createElement("div");
+    row.className = "field-row";
+
+    const label = document.createElement("input");
+    label.placeholder = "Field Name";
+
+    const value = document.createElement("input");
+    value.placeholder = "Enter Details";
+
+    const remove = document.createElement("button");
+    remove.className = "remove-btn";
+    remove.innerText = "X";
+    remove.onclick = () => row.remove();
+
+    row.appendChild(label);
+    row.appendChild(value);
+    row.appendChild(remove);
+
+    container.appendChild(row);
+}
+
+function addSection() {
+    const container = document.getElementById("fields-container");
+
+    const section = document.createElement("div");
+    section.className = "section-title";
+
+    const input = document.createElement("input");
+    input.placeholder = "Section Title (e.g., Family Details)";
+
+    const removeBtn = document.createElement("button");
+    removeBtn.className = "section-remove-btn";
+    removeBtn.innerText = "X";
+    removeBtn.onclick = () => section.remove();
+
+    section.appendChild(input);
+    section.appendChild(removeBtn);
+
+    container.appendChild(section);
+}
+
+function previewPhoto(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById("photoBox").innerHTML =
+                "<img src='" + e.target.result + "'>";
+        }
+        reader.readAsDataURL(file);
+    }
+}
+</script>
+
+</body>
+</html>
